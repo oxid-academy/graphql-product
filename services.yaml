@@ -1,0 +1,15 @@
+services:
+
+    _defaults:
+        public: false
+        autowire: true
+
+    OxidAcademy\GraphQL\Product\:
+        resource: 'src/*'
+        exclude: 'src/**/{DataType,Exception,Infrastructure}'
+        public: true
+
+    OxidAcademy\GraphQL\Product\Shared\Service\NamespaceMapper:
+        class: OxidAcademy\GraphQL\Product\Shared\Service\NamespaceMapper
+        tags: ['graphql_namespace_mapper']
+
