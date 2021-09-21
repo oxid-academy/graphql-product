@@ -1,12 +1,8 @@
 
 
 ## Install
-
-Make sure to place the module in this directory: `source/modules/oxac/graphql-product`
-
 ```shell
-composer config repositories.oxac-graphql-product path /var/www/html/source/modules/oxac/graphql-product/
-composer require oxid-academy/graphql-product:"dev-master"
+composer require oxid-academy/graphql-product
 ```
 
 ## Sources
