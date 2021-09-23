@@ -12,7 +12,7 @@ use TheCodingMachine\GraphQLite\Types\ID;
 final class Product
 {
     /** @var ProductService */
-    private $productService;
+    private ProductService $productService;
 
     public function __construct(
         ProductService $productService

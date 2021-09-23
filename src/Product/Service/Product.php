@@ -24,24 +24,12 @@ final class Product
     /**
      * @throws ProductNotFound
      */
-    /*
-    public function product(ID $productId): ProductDataType
-    {
-        try {
-            $product = $this->productRepository->product($productId);
-        } catch (NotFound $e) {
-            throw ProductNotFound::byId($productId);
-        }
-
-        return $product;
-    }
-    */
     public function product(ID $itemNumber): ProductDataType
     {
         try {
-            $product =  $this->productRepository->getProductByItemNumber($itemNumber);
+            $product = $this->productRepository->getProductByItemNumber($itemNumber);
         } catch (NotFound $e) {
-            throw ProductNotFound::byId($itemNumber); //TODO? MK
+            throw ProductNotFound::byId((string) $itemNumber);
         }
 
         return $product;

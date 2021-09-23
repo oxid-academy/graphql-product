@@ -2,7 +2,7 @@
     "name": "oxid-academy/graphql-product",
     "description": "Description of the package.",
     "type": "oxideshop-module",
-    "keywords": ["oxid", "modules", "eShop", "graphql"],
+    "keywords": ["oxid", "modules", "eShop", "graphql", "oxid academy"],
     "homepage": "https://www.oxid-esales.com",
     "license": "GPL-3.0-or-later",
     "authors": [

@@ -9,7 +9,7 @@ $sMetadataVersion = '2.1';
  * Module information
  */
 $aModule = [
-    'id' => 'oxacgraphqlproduct',
+    'id' => 'oxac_graphql_product',
     'title' => 'OXID Academy :: GraphQL - Product',
     'description' => [
         'de' => '',
