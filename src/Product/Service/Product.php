@@ -34,4 +34,32 @@ final class Product
 
         return $product;
     }
+
+    /**
+     * @throws ProductNotFound
+     */
+    public function changeTitle(ID $itemNumber, string $title): ProductDataType
+    {
+        /*
+        if (!((string) $id = $this->authenticationService->getUserId())) {
+            throw new InvalidLogin('Unauthorized');
+        }
+        */
+
+        if (!strlen($title)) {
+            //throw 
+        }
+
+        try {
+            $product = $this->productRepository->getProductByItemNumber($itemNumber);
+        } catch (NotFound $e) {
+            throw ProductNotFound::byId((string) $itemNumber);
+        }
+
+        $model = $product->getEshopModel();
+        $model->assign(['oxtitle' => $title]);
+        $model->save();
+
+        return $product;
+    }
 }

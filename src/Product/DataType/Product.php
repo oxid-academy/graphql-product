@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace OxidAcademy\GraphQL\Product\Product\DataType;
 
-use OxidEsales\GraphQL\Storefront\Product\DataType\Product as StoreFrontProduct;
 use OxidEsales\Eshop\Application\Model\Article as EshopProductModel;
-use TheCodingMachine\GraphQLite\Annotations\ExtendType;
 use TheCodingMachine\GraphQLite\Annotations\Field;
 use TheCodingMachine\GraphQLite\Annotations\Type;
 use TheCodingMachine\GraphQLite\Types\ID;
@@ -23,6 +21,11 @@ final class Product
         EshopProductModel $product
     ) {
         $this->product = $product;
+    }
+
+    public function getEshopModel(): EshopProductModel
+    {
+        return $this->product;
     }
 
     /**

@@ -6,6 +6,7 @@ namespace OxidAcademy\GraphQL\Product\Product\Controller;
 
 use OxidAcademy\GraphQL\Product\Product\DataType\Product as ProductDataType;
 use OxidAcademy\GraphQL\Product\Product\Service\Product as ProductService;
+use TheCodingMachine\GraphQLite\Annotations\Mutation;
 use TheCodingMachine\GraphQLite\Annotations\Query;
 use TheCodingMachine\GraphQLite\Types\ID;
 
@@ -26,5 +27,13 @@ final class Product
     public function product(ID $itemNumber): ProductDataType
     {
         return $this->productService->product($itemNumber);
+    }
+
+    /**
+     * @Mutation()
+     */
+    public function changeTitle(ID $itemNumber, string $title): ProductDataType
+    {
+        return $this->productService->changeTitle($itemNumber, $title);
     }
 }
