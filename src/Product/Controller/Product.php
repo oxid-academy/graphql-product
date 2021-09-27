@@ -1,11 +1,10 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace OxidAcademy\GraphQL\Product\Product\Controller;
 
 use OxidAcademy\GraphQL\Product\Product\DataType\Product as ProductDataType;
 use OxidAcademy\GraphQL\Product\Product\Service\Product as ProductService;
+use TheCodingMachine\GraphQLite\Annotations\Logged;
 use TheCodingMachine\GraphQLite\Annotations\Mutation;
 use TheCodingMachine\GraphQLite\Annotations\Query;
 use TheCodingMachine\GraphQLite\Types\ID;
@@ -30,9 +29,10 @@ final class Product
     }
 
     /**
+     * @Logged()
      * @Mutation()
      */
-    public function changeTitle(ID $itemNumber, string $title): ProductDataType
+    public function changeTitle(ID $itemNumber, string $title): string
     {
         return $this->productService->changeTitle($itemNumber, $title);
     }

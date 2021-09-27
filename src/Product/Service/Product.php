@@ -1,23 +1,27 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace OxidAcademy\GraphQL\Product\Product\Service;
 
 use OxidAcademy\GraphQL\Product\Product\DataType\Product as ProductDataType;
 use OxidAcademy\GraphQL\Product\Product\Exception\ProductNotFound;
+use OxidAcademy\GraphQL\Product\Product\Exception\ProductNotUpdatable;
 use OxidAcademy\GraphQL\Product\Product\Infrastructure\ProductRepository;
+use OxidEsales\GraphQL\Base\Exception\InvalidLogin;
+use OxidEsales\GraphQL\Base\Exception\InvalidToken;
 use OxidEsales\GraphQL\Base\Exception\NotFound;
+use OxidEsales\GraphQL\Base\Service\Authentication;
 use TheCodingMachine\GraphQLite\Types\ID;
 
 final class Product
 {
-    /** @var ProductRepository */
-    private $productRepository;
+    private Authentication $authenticationService;
+    private ProductRepository $productRepository;
 
     public function __construct(
+        Authentication $authenticationService,
         ProductRepository $productRepository
     ) {
+        $this->authenticationService = $authenticationService;
         $this->productRepository = $productRepository;
     }
 
@@ -37,29 +41,24 @@ final class Product
 
     /**
      * @throws ProductNotFound
+     * @throws ProductNotUpdatable
+     * @throws InvalidLogin
+     * @throws InvalidToken
      */
-    public function changeTitle(ID $itemNumber, string $title): ProductDataType
+    public function changeTitle(ID $itemNumber, string $title): string
     {
-        /*
-        if (!((string) $id = $this->authenticationService->getUserId())) {
+        if (!($this->authenticationService->getUserId())) {
             throw new InvalidLogin('Unauthorized');
         }
-        */
 
-        if (!strlen($title)) {
-            //throw 
-        }
+        // TODO: Missing check if the authenticated user is allowed to update products.
 
         try {
-            $product = $this->productRepository->getProductByItemNumber($itemNumber);
+            $success = $this->productRepository->changeProductFields($itemNumber, ['oxtitle' => $title]);
         } catch (NotFound $e) {
             throw ProductNotFound::byId((string) $itemNumber);
         }
 
-        $model = $product->getEshopModel();
-        $model->assign(['oxtitle' => $title]);
-        $model->save();
-
-        return $product;
+        return $success;
     }
 }
