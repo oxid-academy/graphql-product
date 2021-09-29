@@ -7,6 +7,7 @@ use OxidAcademy\GraphQL\Product\Product\Service\Product as ProductService;
 use TheCodingMachine\GraphQLite\Annotations\Logged;
 use TheCodingMachine\GraphQLite\Annotations\Mutation;
 use TheCodingMachine\GraphQLite\Annotations\Query;
+use TheCodingMachine\GraphQLite\Annotations\Right;
 use TheCodingMachine\GraphQLite\Types\ID;
 
 final class Product
@@ -30,6 +31,7 @@ final class Product
 
     /**
      * @Logged()
+     * @Right("ADMINISTER_PRODUCT")
      * @Mutation()
      */
     public function changeTitle(ID $itemNumber, string $title): string

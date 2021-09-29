@@ -12,3 +12,7 @@ services:
     OxidAcademy\GraphQL\Product\Shared\Service\NamespaceMapper:
         class: OxidAcademy\GraphQL\Product\Shared\Service\NamespaceMapper
         tags: ['graphql_namespace_mapper']
+
+    OxidAcademy\GraphQL\Product\Shared\Service\PermissionProvider:
+        class: OxidAcademy\GraphQL\Product\Shared\Service\PermissionProvider
+        tags: ['graphql_permission_provider']
