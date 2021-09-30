@@ -30,6 +30,9 @@ final class ProductRepository
         );
     }
 
+    /**
+     * @throws NotFound
+     */
     public function getProductByItemNumber(ID $itemNumber): ProductDataType
     {
         $queryBuilder = ContainerFactory::getInstance()
@@ -57,7 +60,7 @@ final class ProductRepository
     /**
      * Updates the given fields for a product by the product number.
      *
-     * @param ID $itemNumber The item number of the product. Do not get confused with the oxid of the product.
+     * @param ID $itemNumber  The item number of the product. Do not get confused with the oxid of the product.
      * @param array $keyValue Must have a format like ['table_field => value'], e.g.: ['oxtitle' => 'the new title']
      *                        Can also be multiple fields at once: ['k1' => 'v1', 'k2' => 'v2', ... 'kn' => 'vn']
      * @return string         On success, the method BaseModel::save returns the id (oxid) of the record.
