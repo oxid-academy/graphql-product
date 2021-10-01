@@ -17,6 +17,43 @@ vendor/bin/oe-console oe:module:deactivate oxac_graphql_productextension
 You can use your favourite GraphQL client to explore the API, if you do not already have one installed, you may use
 [Altair GraphQL Client](https://altair.sirmuel.design/).
 
+### Query 
+#### Request
+```
+query {
+  product (itemNumber: "1402") {
+    itemNumber,
+    title
+  }
+}
+```
+#### Response
+```
+{
+  "data": {
+    "product": {
+      "itemNumber": "1402",
+      "title": "Trapez ION MADTRIXX"
+    }
+  }
+}
+```  
+
+### Mutation
+#### Request
+```
+mutation{
+  changeTitle(itemNumber: "1501", title: "Changed Title")
+}
+```
+#### Response
+```
+{
+  "data": {
+    "changeTitle": "0584e8b766a4de2177f9ed11d1587f55"
+  }
+}
+```
 
 ## Sources
 
