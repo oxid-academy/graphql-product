@@ -18,6 +18,7 @@ You can use your favourite GraphQL client to explore the API, if you do not alre
 [Altair GraphQL Client](https://altair.sirmuel.design/).
 
 ### Query 
+URL: `http://localhost/graphql/?shp=1&lang=0`
 #### Request
 ```
 query {
@@ -40,6 +41,7 @@ query {
 ```  
 
 ### Mutation
+URL: `http://localhost/graphql/?shp=1&lang=0`
 #### Request
 ```
 mutation{
