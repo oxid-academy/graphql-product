@@ -4,7 +4,7 @@ namespace OxidAcademy\GraphQL\Product\Product\Exception;
 
 use OxidEsales\GraphQL\Base\Exception\Error;
 
-class ProductNotUpdatable extends Error
+final class ProductNotUpdatable extends Error
 {
     public const ERROR_MESSAGE = 'Error while updating the record!';
 }
