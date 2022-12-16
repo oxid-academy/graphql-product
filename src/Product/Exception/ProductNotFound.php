@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace OxidAcademy\GraphQL\Product\Product\Exception;
 
@@ -8,8 +10,8 @@ use function sprintf;
 
 final class ProductNotFound extends NotFound
 {
-    public static function byId(string $id): self
+    public function __construct(string $oxid)
     {
-        return new self(sprintf('Product was not found by id: %s', $id));
+        parent::__construct(sprintf('Product was not found by id: %s', $oxid));
     }
 }

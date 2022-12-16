@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace OxidAcademy\GraphQL\Product\Product\Service;
 
@@ -22,12 +24,12 @@ final class Product
     /**
      * @throws ProductNotFound
      */
-    public function product(ID $itemNumber): ProductDataType
+    public function product(ID $productNumber): ProductDataType
     {
         try {
-            $product = $this->productRepository->getProductByItemNumber($itemNumber);
+            $product = $this->productRepository->getProductByItemNumber($productNumber);
         } catch (NotFound $e) {
-            throw ProductNotFound::byId((string) $itemNumber);
+            throw new ProductNotFound((string) $productNumber);
         }
 
         return $product;
@@ -37,14 +39,19 @@ final class Product
      * @throws ProductNotFound
      * @throws ProductNotUpdatable
      */
-    public function changeTitle(ID $itemNumber, string $title): string
+    public function changeTitle(ID $productNumber, string $title): ProductDataType
     {
         try {
-            $success = $this->productRepository->changeProductFields($itemNumber, ['oxtitle' => $title]);
+            $product = $this->productRepository->changeProductFields(
+                $productNumber,
+                [
+                    'oxtitle' => $title
+                ]
+            );
         } catch (NotFound $e) {
-            throw ProductNotFound::byId((string) $itemNumber);
+            throw new ProductNotFound((string) $productNumber);
         }
 
-        return $success;
+        return $product;
     }
 }

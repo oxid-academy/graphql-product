@@ -6,7 +6,7 @@ services:
 
     OxidAcademy\GraphQL\Product\:
         resource: 'src/*'
-        exclude: 'src/**/{DataType,Exception,Infrastructure}'
+        exclude: 'src/**/{DataType,Exception}'
         public: true
 
     OxidAcademy\GraphQL\Product\Shared\Service\NamespaceMapper:

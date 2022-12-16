@@ -1,27 +1,29 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace OxidAcademy\GraphQL\Product\Product\DataType;
 
-use OxidEsales\Eshop\Application\Model\Article as EshopProductModel;
+use OxidEsales\Eshop\Application\Model\Article as EshopModelProduct;
 use TheCodingMachine\GraphQLite\Annotations\Field;
 use TheCodingMachine\GraphQLite\Annotations\Type;
 use TheCodingMachine\GraphQLite\Types\ID;
 
 /**
- * @Type()
+ * @Type(name="OxAcProduct")
  */
 final class Product
 {
-    /** @var EshopProductModel */
+    /** @var EshopModelProduct */
     private $product;
 
     public function __construct(
-        EshopProductModel $product
+        EshopModelProduct $product
     ) {
         $this->product = $product;
     }
 
-    public function getEshopModel(): EshopProductModel
+    public function getEshopModel(): EshopModelProduct
     {
         return $this->product;
     }
@@ -29,19 +31,9 @@ final class Product
     /**
      * @Field()
      */
-    public function getId(): ID
+    public function getProductNumber(): string
     {
-        return new ID(
-            $this->product->getId()
-        );
-    }
-
-    /**
-     * @Field()
-     */
-    public function getItemNumber(): string
-    {
-        return $this->product->getFieldData('oxartnum');
+        return (string) $this->product->getFieldData('oxartnum');
     }
 
     /**

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace OxidAcademy\GraphQL\Product\Shared\Service;
 
@@ -6,17 +8,19 @@ use OxidEsales\GraphQL\Base\Framework\NamespaceMapperInterface;
 
 final class NamespaceMapper implements NamespaceMapperInterface
 {
+    private const SPACE = '\\OxidAcademy\\GraphQL\\Product\\';
+
     public function getControllerNamespaceMapping(): array
     {
         return [
-            '\\OxidAcademy\\GraphQL\\Product\\Product\\Controller' => __DIR__ . '/../../Product/Controller/',
+            self::SPACE . 'Product\\Controller' => __DIR__ . '/../../Product/Controller/',
         ];
     }
 
     public function getTypeNamespaceMapping(): array
     {
         return [
-            '\\OxidAcademy\\GraphQL\\Product\\Product\\DataType' => __DIR__ . '/../../Product/DataType/',
+            self::SPACE . 'Product\\DataType' => __DIR__ . '/../../Product/DataType/',
         ];
     }
 }

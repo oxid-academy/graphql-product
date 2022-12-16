@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace OxidAcademy\GraphQL\Product\Product\Controller;
 
@@ -22,20 +24,20 @@ final class Product
     }
 
     /**
-     * @Query()
+     * @Query(name="OxAcProduct")
      */
-    public function product(ID $itemNumber): ProductDataType
+    public function product(ID $productNumber): ProductDataType
     {
-        return $this->productService->product($itemNumber);
+        return $this->productService->product($productNumber);
     }
 
     /**
      * @Logged()
      * @Right("ADMINISTER_PRODUCT")
-     * @Mutation()
+     * @Mutation(name="OxAcProductChangeTitle")
      */
-    public function changeTitle(ID $itemNumber, string $title): string
+    public function changeTitle(ID $productNumber, string $title): ProductDataType
     {
-        return $this->productService->changeTitle($itemNumber, $title);
+        return $this->productService->changeTitle($productNumber, $title);
     }
 }
