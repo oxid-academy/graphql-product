@@ -13,14 +13,14 @@ final class NamespaceMapper implements NamespaceMapperInterface
     public function getControllerNamespaceMapping(): array
     {
         return [
-            self::SPACE . 'Product\\Controller' => __DIR__ . '/../../Product/Controller/',
+            self::SPACE . 'Product\\Controller' => dirname(__DIR__, 2) . '/Product/Controller/',
         ];
     }
 
     public function getTypeNamespaceMapping(): array
     {
         return [
-            self::SPACE . 'Product\\DataType' => __DIR__ . '/../../Product/DataType/',
+            self::SPACE . 'Product\\DataType' => dirname(__DIR__, 2) . '/Product/DataType/',
         ];
     }
 }

@@ -39,7 +39,7 @@ final class Product
     /**
      * @Field()
      */
-    public function getTitle(): string
+    public function getProductTitle(): string
     {
         return (string) $this->product->getFieldData('oxtitle');
     }

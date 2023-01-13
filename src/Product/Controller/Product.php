@@ -36,8 +36,8 @@ final class Product
      * @Right("ADMINISTER_PRODUCT")
      * @Mutation(name="OxAcProductChangeTitle")
      */
-    public function changeTitle(ID $productNumber, string $title): ProductDataType
+    public function changeTitle(ID $productNumber, string $productTitle): ProductDataType
     {
-        return $this->productService->changeTitle($productNumber, $title);
+        return $this->productService->changeTitle($productNumber, $productTitle);
     }
 }
